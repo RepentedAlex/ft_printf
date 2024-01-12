@@ -16,7 +16,25 @@
 
 void	ft_assign_content(t_list *node, char *str, va_list args)
 {
-	
+	if (node->type == 1)
+		node->content = va_arg(args, char);
+	if (*str == 's')
+		node->type = 2;
+	if (*str == 'p')
+		node->type = 3;
+	if (*str == 'd')
+		node->type = 4;
+	if (*str == 'i')
+		node->type = 5;
+	if (*str == 'u')
+		node->type = 6;
+	if (*str == 'x')
+		node->type = 7;
+	if (*str == 'X')
+		node->type = 8;
+	if (*str == '%')
+		node->type = 9;
+	return ;
 }
 
 void	ft_parse_type(char *str, int *index, t_list *node)
