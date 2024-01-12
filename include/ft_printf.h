@@ -13,10 +13,10 @@
 #ifndef FT_PRINTF_H
 #define FT_PRINTF_H
 
+#include "../Libft/libft.h"
 #include <stdarg.h>
 #include <unistd.h>
 
-
-
+void	ft_parse(const char *str, t_list **lst, va_list args);
 
 #endif

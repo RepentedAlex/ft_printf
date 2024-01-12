@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "../include/ft_printf.h"
 #include "../Libft/libft.h"
 
 int	ft_printf(const char *str, ...)
@@ -18,14 +18,13 @@ int	ft_printf(const char *str, ...)
 	int		i;
 	int		print_len;
 	t_list	**head;
-	t_list	*tmp;
 	va_list	args;
 
 	if (!str || *str == 0)
 		return (-1);
 	va_start(args, str);
-	tmp = NULL;
 	head = NULL;
+	ft_parse(str, head, args);
 	print_len = 0;
 	i = 0;
 	while (str[i])
@@ -48,9 +47,7 @@ int	ft_printf(const char *str, ...)
 
 int	main(void)
 {
-	char *string = "Voici la variable a afficher %+-0 #d et ceci est le texte qui finit\n";
-	t_list **head;
-
-	head = NULL;
-	ft_parse(string, head, args);
+	int num = 12;
+	char	*str = "Kanz";
+	ft_printf("Voici la variable a afficher %+-0 #d et ceci est le texte qui finit %s\n", num, str);
 }
