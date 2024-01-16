@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 12:53:56 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/15 14:57:52 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:57:13 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,13 @@ void	ft_left_cs(t_print *tab, int a)
 {
 	int	i;
 
-	if (tab->wdt >= a)
+	if (tab->wdt > 1)
 	{
+		tab->tl += write(1, &a, 1);
 		i = 0;
 		while (i < tab->wdt)
 		{
-			tab->tl += write(1, &a, 1);
+			tab->tl += write(1, " ", 1);
 			i++;
 		}
 	}
@@ -32,7 +33,7 @@ void	ft_right_cs(t_print *tab, int a)
 {
 	int	i;
 
-	if (tab->wdt >= a)
+	if (tab->wdt > 1)
 	{
 		i = 0;
 		while (i < tab->wdt)
@@ -40,6 +41,7 @@ void	ft_right_cs(t_print *tab, int a)
 			tab->tl += write(1, " ", 1);
 			i++;
 		}
+		tab->tl += write(1, &a, 1);
 	}
 }
 
@@ -57,11 +59,8 @@ void	ft_print_char(t_print *tab)
 	a = va_arg(tab->args, int);
 //	ft_update_tab(tab, 1);
 	if (tab->wdt && !tab->dash)
-	{
 		ft_right_cs(tab, a);
-		tab->tl += write(1, &a, 1);
-	}
-	if (tab->wdt && tab->dash)
-		ft_left_cs(tab, 0);
+	else if (tab->wdt && tab->dash)
+		ft_left_cs(tab, a);
 	return ;
 }
