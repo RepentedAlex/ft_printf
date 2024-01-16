@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:51:12 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/15 14:37:34 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:14:34 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef	struct	s_print
 
 int		ft_eval_format(t_print *tab, char *format, int pos);
 t_print	*ft_initialise_tab(t_print *tab);
-void	ft_left_cs(t_print *tab, int a);
+//void	ft_left_cs(t_print *tab, int a);
 void	ft_print_char(t_print *tab);
 void	ft_print_hex_min(t_print *tab);
 void	ft_print_hex_maj(t_print *tab);
@@ -46,7 +46,7 @@ void	ft_print_pointer(t_print *tab);
 void	ft_print_string(t_print *tab);
 void	ft_print_unsigned_num(t_print *tab);
 int		ft_printf(const char *format, ...);
-void	ft_right_cs(t_print *tab, int a);
+//void	ft_right_cs(t_print *tab, int a);
 void	ft_update_tab(t_print *tab, int a);
 
 #endif

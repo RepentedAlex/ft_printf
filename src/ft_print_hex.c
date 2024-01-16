@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:06 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/15 14:33:36 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:30:29 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 
 void	ft_print_hex_min(t_print *tab)
 {
-
+	(void)tab;
 }
 
 void	ft_print_hex_maj(t_print *tab)
 {
-
+	(void)tab;
 }

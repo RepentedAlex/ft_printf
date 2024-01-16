@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:08:52 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/15 14:44:49 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:11:44 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,7 @@
 
 int	ft_eval_format(t_print *tab, char *format, int pos)
 {
-	while (format[pos] >= '0' && format[pos] <= '9' && tab->wdt == 0)
-	{
-		//GERER FIELD WIDTH
-		tab->wdt = ft_atoi(&format[pos]);
-	}
-	while (ft_strchr("cspdiuxX%", format[pos]))
+	while (!ft_strchr("cspdiuxX%", format[pos]) && !ft_strchr("0123456789", format[pos]))
 	{
 		if (format[pos] == '#')
 		{
@@ -38,14 +33,14 @@ int	ft_eval_format(t_print *tab, char *format, int pos)
 			tab->prc = ft_atoi(&format[pos + 1]);
 			pos++;
 		}
-		if (format[pos] == '+')
-		{
-			tab->sign = 1;
-			pos++;
-		}
 		if (format[pos] == '-')
 		{
 			tab->dash = 1;
+			pos++;
+		}
+		if (format[pos] == '+')
+		{
+			tab->sign = 1;
 			pos++;
 		}
 		if (format[pos] == '%')
@@ -54,11 +49,17 @@ int	ft_eval_format(t_print *tab, char *format, int pos)
 			pos++;
 		}
 	}
+	while (format[pos] > '0' && format[pos] <= '9')
+	{
+		//GERER FIELD WIDTH
+		tab->wdt = ft_atoi(&format[pos]);
+		if (tab->wdt != 0)
+			pos++;
+	}
 	if (tab->zero && tab->dash)
 		tab->zero = 0;
 	if (tab->sp && tab->sign)
 		tab->sp = 0;
-	return (pos);
 	if (format[pos] == 'c')
 		ft_print_char(tab);
 	if (format[pos] == 's')
@@ -75,6 +76,7 @@ int	ft_eval_format(t_print *tab, char *format, int pos)
 		ft_print_hex_maj(tab);
 	if (format[pos] == '%')
 		ft_print_perc(tab);
+	return (pos);
 }
 
 t_print	*ft_initialise_tab(t_print *tab)
@@ -120,8 +122,10 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
+/*
 int	main(void)
 {
 	int c = 75;
 	ft_printf("TEst:%4c\n", c);
 }
+*/
