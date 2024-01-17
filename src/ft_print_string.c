@@ -13,60 +13,17 @@
 #include "../include/ft_printf.h"
 #include "../Libft/libft.h"
 
-static void	ft_left_cs(t_print *tab, char *str)
+int	ft_print_string(char *str)
 {
 	int	i;
-	int	len;
 
-	len = (int)ft_strlen(str);
-	tab->tl += ft_putstr_fd(str, 1);
-	if (tab->wdt > len)
+	i = 0;
+	if (str == NULL)
 	{
-		i = 0;
-		while ((i + len) < tab->wdt)
-		{
-			tab->tl += write(1, " ", 1);
-			i++;
-		}
+		ft_putstr_fd("(null)", 1);
+		return (6);
 	}
-}
-
-static void	ft_right_cs(t_print *tab, char *str)
-{
-	int	i;
-	int	len;
-
-	len = (int)ft_strlen(str);
-	if (tab->wdt > len)
-	{
-		i = 0;
-		while ((i + len) < tab->wdt)
-		{
-			tab->tl += write(1, " ", 1);
-			i++;
-		}
-	}
-	tab->tl += ft_putstr_fd(str, 1);
-}
-
-/*
-void	ft_update_tab(t_print *tab, int a)
-{
-
-}
-*/
-
-void	ft_print_string(t_print *tab)
-{
-	char	*str;
-
-	str = va_arg(tab->args, char *);
-//	ft_update_tab(tab, 1);
-	if (tab->wdt && !tab->dash)
-		ft_right_cs(tab, str);
-	else if (tab->wdt && tab->dash)
-		ft_left_cs(tab, str);
-	else
-		ft_putstr_fd(str, 1);
-	return ;
+	while (str[i])
+		i += write(1, &str[i], 1);
+	return (i);
 }

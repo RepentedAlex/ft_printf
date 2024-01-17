@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_pointer.c                                 :+:      :+:    :+:   */
+/*   ft_print_unsigned_num.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/15 14:26:59 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 13:29:16 by apetitco         ###   ########.fr       */
+/*   Created: 2024/01/15 14:29:30 by apetitco          #+#    #+#             */
+/*   Updated: 2024/01/16 13:29:49 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 #include "../Libft/libft.h"
 
-int		ft_pointer_len(uintptr_t nb)
+int		ft_nb_len(unsigned int nb)
 {
 	int	len;
 
@@ -21,39 +21,43 @@ int		ft_pointer_len(uintptr_t nb)
 	while (nb != 0)
 	{
 		len++;
-		nb /= 16;
+		nb /= 10;
 	}
 	return (len);
 }
 
-void	ft_put_pointer(uintptr_t nb)
+char	*ft_uitoa(unsigned int n)
 {
-	if (nb >= 16)
+	char	*nb;
+	int		len;
+
+	len = ft_nb_len(n);
+	nb = (char *)malloc(sizeof(char) * (len + 1));
+	if (!nb)
+		return (0);
+	nb[len] = 0;
+	while (n != 0)
 	{
-		ft_put_pointer(nb / 16);
-		ft_put_pointer(nb % 16);
+		nb[len - 1] = n % 10 + '0';
+		n /= 10;
+		len--;
 	}
-	else
-	{
-		if (nb <= 9)
-			ft_putchar_fd((nb + '0'), 1);
-		else
-			ft_putchar_fd((nb - 10 + 'a'), 1);
-	}
+	return (nb);
 }
 
-int		ft_print_pointer(unsigned long long ptr)
+int		ft_print_unsigned_num(unsigned int n)
 {
-	int	print_len;
+	int		print_len;
+	char	*nb;
 
 	print_len = 0;
-	print_len += write(1, "0x", 2);
-	if (ptr == 0)
+	if (n == 0)
 		print_len += write(1, "0", 1);
 	else
 	{
-		ft_put_pointer(ptr);
-		print_len += ft_pointer_len(ptr);
+		nb = ft_uitoa(n);
+		print_len += ft_print_string(nb);
+		free(nb);
 	}
 	return (print_len);
 }

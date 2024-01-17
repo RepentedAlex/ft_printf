@@ -1,60 +1,67 @@
-#################
-##  VARIABLES  ##
-#################
+#Variables
 
-#	Libft Makefile path
-LIBFTDIR = ./Libft
+NAME		= libftprintf.a
+INCLUDE		= include
+LIBFT		= Libft
+SRC_DIR		= src/
+OBJ_DIR		= obj/
+CC			= gcc
+CFLAGS		= -Wall -Werror -Wextra -I
+RM			= rm -f
+AR			= ar rcs
 
-#	Sources
-SRCDIR = ./src
-SRC = main.c \
-	  ft_printf_utils.c \
-	  ft_print_hex.c \
-	  ft_print_ptr.c \
-	  ft_print_unsigned.c
+# Colors
 
-#	Objects
-OBJDIR = ./obj
+DEF_COLOR = \033[0;39m
+GRAY = \033[0;90m
+RED = \033[0;91m
+GREEN = \033[0;92m
+YELLOW = \033[0;93m
+BLUE = \033[0;94m
+MAGENTA = \033[0;95m
+CYAN = \033[0;96m
+WHITE = \033[0;97m
 
-#	Includes
-INCDIR = ./include
+#Sources
 
-#	Libraries
-LIBDIR = 
-LIBS = 
+SRC_FILES	=	ft_printf ft_utils ft_print_pointer ft_print_unsigned_num ft_print_hex ft_print_string
 
-#	Output
-NAME = libftprintf.a
 
-#	Compiler
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+SRC 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+OBJ 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
-##############
-##  COLORS  ##
-##############
+###
 
-CLEAN_COLOR = 9
-CLEAN_COLOR_T = 196
-LINK_COLOR = 47
-LINK_COLOR_T = 46
-OBJ_COLOR = 122
-OBJ_COLOR_T = 123
-NORM_COLOR = 153
-NORM_COLOR_T = 141
-NORM_COLOR_ERR = 160
-NORM_COLOR_WAR = 214
-RUNT_COLR_T = 7
-RUN_COLOR = 147
+OBJF		=	.cache_exists
 
-############
-##  AUTO  ##
-############
+all:		$(NAME)
 
-OBJ = $(addprefix $(OBJDIR), $(addsuffix .o, $(basename $(SRC))))
-INCFLAG = $(addprefix -I,$(INCDIR))
-NORME = $(addsuffix /*.h,$(INCDIR)) $(addprefix $(SRCDIR)/,$(SRC))
+$(NAME):	$(OBJ)
+			@make -C $(LIBFT)
+			@cp libft/libft.a .
+			@mv libft.a $(NAME)
+			@$(AR) $(NAME) $(OBJ)
+			@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
 
-###############
-##  TARGETS  ##
-###############
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
+			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
+			@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+
+$(OBJF):
+			@mkdir -p $(OBJ_DIR)
+
+clean:
+			@$(RM) -r $(OBJ_DIR)
+			@make clean -C $(LIBFT)
+			@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+
+fclean:		clean
+			@$(RM) $(NAME)
+			@$(RM) $(LIBFT)/libft.a
+			@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
+			@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
+
+re:			fclean all
+			@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
+
+.PHONY:		all clean fclean re
