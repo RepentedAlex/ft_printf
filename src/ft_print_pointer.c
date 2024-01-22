@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:26:59 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 13:29:16 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/20 17:04:20 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,13 @@ int		ft_print_pointer(unsigned long long ptr)
 	int	print_len;
 
 	print_len = 0;
-	print_len += write(1, "0x", 2);
 	if (ptr == 0)
-		print_len += write(1, "0", 1);
+	{
+		print_len += write(1, "(nil)", 5);
+	}
 	else
 	{
+		print_len += write(1, "0x", 2);
 		ft_put_pointer(ptr);
 		print_len += ft_pointer_len(ptr);
 	}

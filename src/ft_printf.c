@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:08:52 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 14:11:44 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:49:15 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ int	ft_printf(const char *format, ...)
 	int		ret;
 	va_list	args;
 
+	if (format == NULL)
+			return -1;
 	i = 0;
 	ret = 0;
 	va_start(args, format);
@@ -65,10 +67,11 @@ int	ft_printf(const char *format, ...)
 	return (ret);
 }
 
-
+/*
 int	main(void)
 {
-//	int c = 75;
-	ft_printf(" %c %c %c ", '0', 75, '1');
+	int c = -1;
+	ft_printf(" %X ", c);
+//	printf(" %X ", c);
 }
-
+*/

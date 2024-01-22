@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:06 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 13:30:29 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/22 17:06:42 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_hex_len(unsigned int nb)
 	int	len;
 
 	len = 0;
-	while (len != 0)
+	while (nb != 0)
 	{
 		len++;
 		nb = nb / 16;
