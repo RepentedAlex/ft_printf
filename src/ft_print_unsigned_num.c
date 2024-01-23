@@ -6,14 +6,14 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:29:30 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 13:29:49 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:34:54 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include "../Libft/libft.h"
 
-int		ft_nb_len(unsigned int nb)
+int	ft_nb_len(unsigned int nb)
 {
 	int	len;
 
@@ -45,7 +45,7 @@ char	*ft_uitoa(unsigned int n)
 	return (nb);
 }
 
-int		ft_print_unsigned_num(unsigned int n)
+int	ft_print_unsigned_num(unsigned int n)
 {
 	int		print_len;
 	char	*nb;

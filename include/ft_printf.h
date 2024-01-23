@@ -6,17 +6,17 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:51:12 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 14:14:34 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:32:32 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
-#define FT_PRINTF_H
+# define FT_PRINTF_H
 
-#include "../Libft/libft.h"
-#include <stdarg.h>
-#include <stdint.h>
-#include <unistd.h>
+# include "../Libft/libft.h"
+# include <stdarg.h>
+# include <stdint.h>
+# include <unistd.h>
 
 int		ft_eval_format(va_list args, const char format);
 int		ft_hex_len(unsigned int nb);

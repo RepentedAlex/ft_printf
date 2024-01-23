@@ -6,7 +6,7 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/13 17:14:37 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/16 14:21:20 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:37:19 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,9 @@
 # include	<stdlib.h>
 # include	<unistd.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
-	int				index;
-	int				type; //1=c;2=s;3=p;4=d;5=i;6=u;7=x;8=X;9=%
 	void			*content;
-	int				flag_minus;
-	int				flag_zero;
-	int				flag_dot;
-	int				flag_hashtag;
-	int				flag_plus;
-	int				flag_space;
 	struct s_list	*next;
 }				t_list;
 

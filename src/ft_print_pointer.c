@@ -6,14 +6,14 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:26:59 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/20 17:04:20 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:35:10 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include "../Libft/libft.h"
 
-int		ft_pointer_len(uintptr_t nb)
+int	ft_pointer_len(uintptr_t nb)
 {
 	int	len;
 
@@ -42,7 +42,7 @@ void	ft_put_pointer(uintptr_t nb)
 	}
 }
 
-int		ft_print_pointer(unsigned long long ptr)
+int	ft_print_pointer(unsigned long long ptr)
 {
 	int	print_len;
 

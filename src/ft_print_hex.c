@@ -6,14 +6,14 @@
 /*   By: apetitco <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 14:32:06 by apetitco          #+#    #+#             */
-/*   Updated: 2024/01/22 17:06:42 by apetitco         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:35:22 by apetitco         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 #include "../Libft/libft.h"
 
-int		ft_hex_len(unsigned int nb)
+int	ft_hex_len(unsigned int nb)
 {
 	int	len;
 
@@ -47,7 +47,7 @@ void	ft_put_hex(unsigned int nb, const char format)
 	}
 }
 
-int		ft_print_hex(unsigned int nb, const char format)
+int	ft_print_hex(unsigned int nb, const char format)
 {
 	if (nb == 0)
 		return (write(1, "0", 1));
